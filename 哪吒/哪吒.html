@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>哪吒之魔童降世你是谁</title>
+    <style>
+        body {
+            background: url('https://img.zcool.cn/community/01d6d55d3a0b0fa8012187f7a4d3a3.jpg@1280w_1l_2o_100sh.jpg') no-repeat center/cover;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 新增关键DOM元素样式 */
+        #name-container {
+            width: 80%;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #name-display {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 2.5em;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+        }
+
+        /* 修复动画定义 */
+        @keyframes float {
+            0% { transform: translateY(0) rotateY(0deg); }
+            50% { transform: translateY(-100px) rotateY(180deg); }
+            100% { transform: translateY(0) rotateY(360deg); }
+        }
+
+        /* 保持原有3D爱心样式 */
+        .heart-3d {
+            /* 原有样式保持不变 */
+        }
+
+        /* 新增按钮样式 */
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background: #ff3366;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            z-index: 4;
+        }
+    </style>
+</head>
+<body>
+    <h1>哪吒之魔童降世你是谁</h1>
+    
+    <!-- 补充缺失的DOM结构 -->
+    <div id="name-container">
+        <div id="name-display">点击开始</div>
+    </div>
+    
+    <button onclick="toggleRoll()">开始点名</button>
+
+    <div id="image-container">
+        <img id="current-image" class="character-image" alt="角色图片">
+    </div>
+
+    <script>
+        // 声明必须的变量
+        let isRolling = false;
+        let intervalId;
+        const nameDisplay = document.getElementById('name-display');
+        const names = [
+            "绮绮酥1", "绮绮酥2", "绮绮酥3", "哪吒", "敖丙",
+            "敖闰", "申公豹", "隐藏款1", "绮绮酥4", "绮绮酥5"
+        ];
+
+        // 修复图片路径映射
+        const imageMap = {
+           "绮绮酥1": "绮绮酥1.jpg",
+            "绮绮酥2": "绮绮酥2.jpg",
+            "绮绮酥3": "绮绮酥3.jpg",
+            "哪吒": "哪吒.jpg",
+            "敖丙": "敖丙.jpg",
+            "敖闰": "敖闰.jpg",
+            "申公豹": "申公豹.jpg",
+            "隐藏款1": "隐藏款",
+            "绮绮酥4": "琦琦酥4.jpg",
+            "绮绮酥5": "琦琦酥5.jpg",
+        };
+
+        function toggleRoll() {
+            if (!isRolling) {
+                // 开始滚动逻辑
+                isRolling = true;
+                document.querySelector('button').textContent = '停止';
+                document.getElementById('current-image').style.display = 'none';
+                
+                intervalId = setInterval(() => {
+                    nameDisplay.textContent = names[Math.floor(Math.random() * names.length)];
+                }, 50);
+            } else {
+                // 停止逻辑
+                clearInterval(intervalId);
+                isRolling = false;
+                document.querySelector('button').textContent = '开始';
+                
+                // 显示对应图片
+                const currentName = nameDisplay.textContent;
+                const img = document.getElementById('current-image');
+                img.src = imageMap[currentName] || imageMap['默认图片'];
+                img.style.display = 'block';
+                
+                // 生成爱心
+                create3DHeart();
+            }
+        }
+
+        function create3DHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart-3d';
+            heart.style.left = Math.random() * 90 + 'vw';
+            heart.style.top = Math.random() * 90 + 'vh';
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
+
+<button>在昆仑山飘渺的云雾中，申公豹的修行史本身就是部血泪斑驳的奋斗史。作为豹子精修炼成仙，他每片鳞甲都浸透着比哪吒更沉重的宿命诅咒。当太乙真人醉卧云床时，这个口齿不清的修士却在三更灯火中参悟天机，在五更寒露里锤炼道心。元始天尊案前那盏始终空缺的十二金仙席位，何尝不是仙界对异类最冰冷的审判？
+
+"人心中的成见是一座大山"，这句震颤灵魂的台词从申公豹颤抖的唇齿间迸发时，我们突然惊觉：这个"反派"的痛苦呐喊，竟与哪吒的嘶吼形成了镜像般的共鸣。当他将灵珠托付给敖丙，不是阴谋家的算计，而是困兽在偏见牢笼中的绝地反击——既然正统之路早已被先天出身堵死，为何不能另辟蹊径证明自我价值？
+
